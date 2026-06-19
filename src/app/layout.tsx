@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/providers/lenis-provider";
-import { CommandMenu } from "@/components/layout/CommandMenu"; // <-- Add this import
+import { CommandMenu } from "@/components/layout/CommandMenu";
+import { Navbar } from "@/components/layout/Navbar"; // <-- Import the Navbar
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,9 @@ export default function RootLayout({
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
         <LenisProvider>
+          <Navbar /> {/* <-- Add the Navbar here (above children) */}
           {children}
-          <CommandMenu /> {/* <-- Add this right here! */}
+          <CommandMenu />
         </LenisProvider>
       </body>
     </html>

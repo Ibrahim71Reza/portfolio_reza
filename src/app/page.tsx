@@ -1,31 +1,34 @@
+import Link from "next/link";
 import { getFeaturedItems } from "@/content";
 import { UniversalCard } from "@/components/cards/UniversalCard";
-import Link from "next/link";
+import { BackgroundBeams } from "@/components/effects/background-beams";
 
 export default function Home() {
-  // Fetch only the projects you marked as 'featured: true'
   const featuredProjects = getFeaturedItems();
 
   return (
-    <main className="min-h-screen flex flex-col items-center pt-32 pb-24 px-6 relative overflow-hidden">
+    <main className="min-h-screen flex flex-col items-center pt-40 pb-24 px-6 relative overflow-hidden bg-neutral-950">
       
+      {/* 1. The Aceternity Background Beams */}
+      <BackgroundBeams className="absolute top-0 left-0 w-full h-[60vh] pointer-events-none" />
+
       {/* Hero Section */}
-      <div className="z-10 text-center max-w-3xl mb-24">
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white">
+      <div className="z-10 text-center max-w-3xl mb-32 relative">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white drop-shadow-2xl">
           Ibrahim Reza
         </h1>
-        <p className="text-lg md:text-xl text-neutral-400 mb-8">
+        <p className="text-lg md:text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
           Software Engineer & Security Researcher. <br />
           Building tools, algorithms, and applications.
         </p>
         <div className="flex justify-center gap-4">
           <Link 
             href="/vault" 
-            className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition-colors"
+            className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)]"
           >
             View My Work
           </Link>
-          <button className="px-6 py-3 rounded-full border border-neutral-700 text-white font-semibold hover:bg-neutral-800 transition-colors">
+          <button className="px-6 py-3 rounded-full border border-neutral-700 text-white font-semibold hover:bg-neutral-800 transition-colors backdrop-blur-md bg-neutral-900/30">
             Contact Me
           </button>
         </div>
@@ -37,14 +40,12 @@ export default function Home() {
           <h2 className="text-2xl font-bold text-neutral-200">Featured Artifacts</h2>
         </div>
         
-        {/* The Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredProjects.map((project) => (
             <UniversalCard key={project.id} item={project} />
           ))}
         </div>
       </div>
-
     </main>
   );
 }
