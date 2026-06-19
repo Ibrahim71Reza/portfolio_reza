@@ -1,5 +1,6 @@
 import { getFeaturedItems } from "@/content";
 import { UniversalCard } from "@/components/cards/UniversalCard";
+import Link from "next/link";
 
 export default function Home() {
   // Fetch only the projects you marked as 'featured: true'
@@ -18,9 +19,12 @@ export default function Home() {
           Building tools, algorithms, and applications.
         </p>
         <div className="flex justify-center gap-4">
-          <button className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition-colors">
+          <Link 
+            href="/vault" 
+            className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition-colors"
+          >
             View My Work
-          </button>
+          </Link>
           <button className="px-6 py-3 rounded-full border border-neutral-700 text-white font-semibold hover:bg-neutral-800 transition-colors">
             Contact Me
           </button>
